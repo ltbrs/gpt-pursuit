@@ -19,4 +19,5 @@ Compete against LLM at Trival Pursuit.
    - Compare user answers to LLM challenger answers. Provide ranking
 5. Front end application basics:
    - Propose N (10 questions), text box to answer
-   - At the end, provide score, LLM answers, and ranking. 
+   - At the end, provide score, LLM answers, and ranking.
+   - (Next it could be great to challenge them on specific topics)
