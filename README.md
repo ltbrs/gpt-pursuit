@@ -21,3 +21,9 @@ Compete against LLM at Trival Pursuit.
    - Propose N (10 questions), text box to answer
    - At the end, provide score, LLM answers, and ranking.
    - (Next it could be great to challenge them on specific topics)
+
+# UI ideas
+
+- question plus text box
+- llm answers
+- line chart of ranking evolutions between llm and you
