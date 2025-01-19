@@ -6,7 +6,6 @@ Compete against LLM at Trival Pursuit.
 1. Gather data:
    - https://opentdb.com/
    - https://drive.google.com/file/d/0Bzs-xvR-5hQ3SGdxNXpWVHFNWG8/view?resourcekey=0-5QvXBiHQPm_KmkhXP9RO8g
-   - https://drive.google.com/file/d/0Bzs-xvR-5hQ3WktpWVA2RmROY1U/view?resourcekey=0-u03CutV7Ye9rxiuUE8c_UQ
 2. Make challenger LLM respond to each questions
 3. LLM evaluator:
    - For each pair of question plus answer (plus real answer since available in dB) check if the challenger LLM has correctly answered
