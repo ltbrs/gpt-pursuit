@@ -14,6 +14,7 @@ export type Question = {
     difficulty: string;
 }
 export type UserAnswer = {
+    id: number;
     question: Question;
     userAnswer: string;
     isCorrect: boolean;

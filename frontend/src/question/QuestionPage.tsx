@@ -64,7 +64,7 @@ const QuestionPage: React.FC = () => {
           </button>
         </div>
       ) : (
-        <ResultPage answers={answers} />
+        <ResultPage answers={answers} questions={previousQuestions} />
       )}
     </div>
   );
