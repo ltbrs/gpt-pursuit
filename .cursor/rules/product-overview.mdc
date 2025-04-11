@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+ # Product Overview
+
+## Project Description
+
+This project appearsis a web application with a TypeScript frontend. It is deployed solely and is hosted on github.io
+
+## Product description
+
+The web app is a quizz game, where user can compete against LLM. 
+- The user is provided as set of questions, that he has to answer. 
+- For each question, LLM would have also answer to it, right or wrong.
+- At the end, the user is provided a summary: which LLM does he beat? In which category? 
+
+
+## Development Guidelines
+Please refer to:
+- `typescript-guidelines.mdc` for frontend development standards
+- `python-guidelines.mdc` for backend development standards 

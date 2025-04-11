@@ -1,0 +1,45 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+ # Python Development Guidelines
+
+## Key Principles
+- Write concise, idiomatic Python code
+- Use functional and declarative programming patterns
+- Avoid classes where possible
+- Focus on readability and maintainability
+
+## Type System
+### Type Hints
+- Use type hints for all function signatures
+- Prefer `TypedDict` over dataclasses or Pydantic models
+- Use Pydantic primarily for input validation and parsing
+- Define service layer interfaces with TypedDict
+
+### Type Definitions
+- Avoid enums - prefer `Literal` union types with constants:
+```python
+# Instead of:
+class Color(Enum):
+    RED = "red"
+    GREEN = "green"
+
+# Use:
+Color = Literal["red", "green"]
+```
+
+
+## Code Style
+- Avoid decorators unless they provide clear value
+- Use meaningful variable and function names
+- Follow PEP 8 guidelines
+- Keep functions focused and single-purpose
+
+
+## Package Management
+- Use Poetry for dependency management
+- Keep dependencies up to date
+- Pin dependency versions
+- Document dependency purposes
