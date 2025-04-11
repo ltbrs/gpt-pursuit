@@ -1,35 +1,23 @@
-# Product Overview
+---
+description: 
+globs: 
+alwaysApply: false
+---
+ # Product Overview
 
 ## Project Description
-This project appears to be a modern web application with a TypeScript frontend and Python backend.
 
-## Architecture
-- Frontend: React with TypeScript
-  - UI Components: Shadcn UI
-  - Styling: Tailwind CSS
-  - State Management: Optional Zustand
-  - Data Fetching: React Query
-  - Routing: React Router
-  - Icons: Lucide Icons
-  - Schema Validation: Zod
+This project appearsis a web application with a TypeScript frontend. It is deployed solely and is hosted on github.io
 
-- Backend: Python with FastAPI
-  - Database: PostgreSQL
-  - API Framework: FastAPI
-  - Package Management: Poetry
-  - Containerization: Docker
-  - Type Safety: TypedDict and Pydantic
-  - Error Handling: Structured AppException system
+## Product description
 
-## Key Features
-- Modern, responsive UI design
-- Type-safe frontend and backend
-- Efficient data fetching and caching
-- Containerized deployment
-- Structured error handling
-- Comprehensive testing strategy
+The web app is a quizz game, where user can compete against LLM. 
+- The user is provided as set of questions, that he has to answer. 
+- For each question, LLM would have also answer to it, right or wrong.
+- At the end, the user is provided a summary: which LLM does he beat? In which category? 
+
 
 ## Development Guidelines
 Please refer to:
 - `typescript-guidelines.mdc` for frontend development standards
-- `python-guidelines.mdc` for backend development standards
+- `python-guidelines.mdc` for backend development standards 
