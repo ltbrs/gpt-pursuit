@@ -1,5 +1,9 @@
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import QuestionPage from './question/QuestionPage';
 
-function App() {
+function HomePage() {
+  const navigate = useNavigate();
+
   return (
     // Container with max width, centered, and padding
     <div className="max-w-4xl mx-auto p-6">
@@ -15,7 +19,10 @@ function App() {
         </p>
         
         {/* Button with hover effects */}
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
+        <button 
+          onClick={() => navigate('/question')}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+        >
           Start Game
         </button>
       </div>
@@ -32,7 +39,18 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App 
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/question" element={<QuestionPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App; 
