@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "History",
+      "question": "Who was the first President of the United States?",
+      "expected_answer": "George Washington",
+      "llm_answers": {
+        "gpt3.5": "George Washington, who served as the first President from 1789 to 1797",
+        "claude": "George Washington was the first President of the United States"
+      },
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "category": "Science",
+      "question": "What is the chemical symbol for gold?",
+      "expected_answer": "Au",
+      "llm_answers": {
+        "gpt3.5": "Au",
+        "claude": "The chemical symbol for gold is Au, derived from the Latin word 'aurum'"
+      },
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "Geography",
+      "question": "Which is the largest ocean on Earth?",
+      "expected_answer": "Pacific Ocean",
+      "llm_answers": {
+        "gpt3.5": "The Pacific Ocean",
+        "claude": "The Atlantic Ocean is the largest ocean on Earth"
+      },
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "category": "Entertainment",
+      "question": "Which actor played Tony Stark in the Marvel Cinematic Universe?",
+      "expected_answer": "Robert Downey Jr.",
+      "llm_answers": {
+        "gpt3.5": "Robert Downey Jr.",
+        "claude": "Robert Downey Jr. portrayed Tony Stark/Iron Man in the MCU"
+      },
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "category": "Sports",
+      "question": "In which year were the first modern Olympic Games held?",
+      "expected_answer": "1896",
+      "llm_answers": {
+        "gpt3.5": "1896 in Athens, Greece",
+        "claude": "The first modern Olympic Games were held in 1896"
+      },
+      "difficulty": "medium"
+    }
+  ]
+} 
