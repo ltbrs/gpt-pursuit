@@ -1,0 +1,35 @@
+# Product Overview
+
+## Project Description
+This project appears to be a modern web application with a TypeScript frontend and Python backend.
+
+## Architecture
+- Frontend: React with TypeScript
+  - UI Components: Shadcn UI
+  - Styling: Tailwind CSS
+  - State Management: Optional Zustand
+  - Data Fetching: React Query
+  - Routing: React Router
+  - Icons: Lucide Icons
+  - Schema Validation: Zod
+
+- Backend: Python with FastAPI
+  - Database: PostgreSQL
+  - API Framework: FastAPI
+  - Package Management: Poetry
+  - Containerization: Docker
+  - Type Safety: TypedDict and Pydantic
+  - Error Handling: Structured AppException system
+
+## Key Features
+- Modern, responsive UI design
+- Type-safe frontend and backend
+- Efficient data fetching and caching
+- Containerized deployment
+- Structured error handling
+- Comprehensive testing strategy
+
+## Development Guidelines
+Please refer to:
+- `typescript-guidelines.mdc` for frontend development standards
+- `python-guidelines.mdc` for backend development standards
