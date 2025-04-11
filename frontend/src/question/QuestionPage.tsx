@@ -1,6 +1,10 @@
 import React from 'react';
+import isCorrect from './queries';
+import { useState } from 'react';
 
 const QuestionPage: React.FC = () => {
+  const [userAnswer, setUserAnswer] = useState('');
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6 text-blue-600">
@@ -21,10 +25,13 @@ const QuestionPage: React.FC = () => {
             id="answer"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Type your answer here..."
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
           />
         </div>
         
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors"
+        onClick={() => isCorrect(userAnswer, "Paris")}>
           Submit Answer
         </button>
       </div>
