@@ -13,3 +13,8 @@ export type Question = {
     };
     difficulty: string;
 }
+export type UserAnswer = {
+    question: Question;
+    userAnswer: string;
+    isCorrect: boolean;
+  };
