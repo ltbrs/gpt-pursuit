@@ -1,12 +1,15 @@
 import React from 'react';
-import { UserAnswer } from './types';
+import { UserAnswer, Question } from './types';
+import { useNavigate } from 'react-router-dom';
 
 interface ResultPageProps {
   answers: UserAnswer[];
+  questions: Question[];
 }
-const ResultPage: React.FC<ResultPageProps> = ({ answers }) => {
+const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
+    const navigate = useNavigate();
     const handleRestart = () => {
-        window.location.href = '/question';
+        navigate('/question');
     };
     return <div className="text-center">
         <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>

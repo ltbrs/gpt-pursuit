@@ -22,6 +22,7 @@ function submitQuestion(userAnswer: string, question: Question) {
   const correct = isCorrect(userAnswer, question.expected_answer);
   
   const newAnswer: UserAnswer = {
+    id: question.id,
     question,
     userAnswer,
     isCorrect: correct
