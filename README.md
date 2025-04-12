@@ -26,3 +26,4 @@ Compete against LLM at Trival Pursuit.
 - question plus text box
 - llm answers
 - line chart of ranking evolutions between llm and you
+- Use time to answer and compare it to LLM inference, power usage to answer (compare to the food you need to process that question)
