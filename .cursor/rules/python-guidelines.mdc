@@ -1,6 +1,6 @@
 ---
 description: 
-globs: 
+globs: *.py,*.ipynb
 alwaysApply: false
 ---
  # Python Development Guidelines
