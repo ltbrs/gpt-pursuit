@@ -8,6 +8,16 @@ interface ResultPageProps {
   questions: Question[];
 }
 
+interface PieDataItem {
+  name: string;
+  value: number;
+}
+
+interface CategoryData {
+  correct: number;
+  total: number;
+}
+
 const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
     const navigate = useNavigate();
     const handleRestart = () => {
@@ -31,7 +41,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
             acc[category].correct++;
         }
         return acc;
-    }, {} as Record<string, { correct: number; total: number }>);
+    }, {} as Record<string, CategoryData>);
 
     const categoryChartData = Object.entries(categoryData).map(([category, data]) => ({
         category,
@@ -39,7 +49,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
         incorrect: data.total - data.correct
     }));
 
-    const pieData = [
+    const pieData: PieDataItem[] = [
         { name: 'Correct', value: correctAnswers },
         { name: 'Incorrect', value: totalQuestions - correctAnswers }
     ];
@@ -78,7 +88,9 @@ const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
                                     outerRadius={80}
                                     fill="#8884d8"
                                     dataKey="value"
-                                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                                    label={({ name, percent }: { name: string; percent: number }) => 
+                                        `${name}: ${(percent * 100).toFixed(0)}%`
+                                    }
                                 >
                                     {pieData.map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={COLORS[index]} />
