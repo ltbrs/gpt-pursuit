@@ -1,11 +1,13 @@
 from typing import Callable, Any, NotRequired
-from dataclasses import dataclass, Field
+from dataclasses import dataclass
 
+DEFAULT_BUILD_QUESTION = lambda content: [{"role": "user", "content": content}]
 
 @dataclass
 class LLMConfig:
     model_size: int
     pipeline_kwargs: dict[str, Any]
+    build_pipeline_input: Callable[[str], Any] = DEFAULT_BUILD_QUESTION
     
     @property
     def name(self) -> str:
@@ -31,14 +33,17 @@ SELECTED_LLMS = [
             model="google/flan-t5-small",
             tokenizer="google/flan-t5-small",
         ),
-        model_size=77_000_000),
+        model_size=77_000_000,
+        build_pipeline_input=lambda x:x
+    ),
     LLMConfig(
         pipeline_kwargs=dict(
             task="text2text-generation",
             model="google/flan-t5-base",
             tokenizer="google/flan-t5-base",
         ),
-        model_size=783_000_000),
+        model_size=783_000_000,
+        build_pipeline_input=lambda x:x),
     # LLMConfig(
     #     model="google/gemma-1.1-2b-it",
     #     n_parameters=2_000_000_000

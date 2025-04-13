@@ -24,7 +24,7 @@ def load_pipeline(llm_config: LLMConfig) -> Pipeline:
 def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[str]:
     pipe = load_pipeline(llm_config)
     return [pipe(
-        [{"role": "user", "content": PROMPT.format(question=question)}]
+        llm_config.build_pipeline_input(PROMPT.format(question=question))
     ) for question in questions]
 
 def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[str]]:
