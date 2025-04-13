@@ -5,8 +5,7 @@ from dataclasses import dataclass, Field
 @dataclass
 class LLMConfig:
     model_size: int
-    pipeline_kwargs: dict[str, Any] = Field(default_factory=dict)
-    answer_question:Callable[[str], str] = Field(default_factory=lambda: lambda x: x)
+    pipeline_kwargs: dict[str, Any]
     
     @property
     def name(self) -> str:
