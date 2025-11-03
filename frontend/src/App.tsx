@@ -5,37 +5,37 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    // Container with max width, centered, and padding
-    <div className="max-w-4xl mx-auto p-6">
-      {/* Header with large text, bold, and margin bottom */}
-      <h1 className="text-4xl font-bold mb-6 text-blue-600">
-        GPT Pursuit
-      </h1>
-      
-      {/* Card with white background, shadow, rounded corners, and padding */}
-      <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-        <p className="text-gray-700 mb-4">
-          Welcome to your new React application!
-        </p>
+    <div className="min-h-screen bg-neutral-white p-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <h1 className="text-6xl md:text-7xl font-black mb-8 text-primary-main leading-tight">
+          GPT PURSUIT
+        </h1>
         
-        {/* Button with hover effects */}
-        <button 
-          onClick={() => navigate('/question')}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors"
-        >
-          Start Game
-        </button>
-      </div>
-
-      {/* Grid layout example */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-gray-100 p-4 rounded">
-          <h2 className="text-xl font-semibold mb-2">Player Stats</h2>
-          <p className="text-gray-600">Your progress will appear here</p>
+        {/* Main Card */}
+        <div className="brutal-card p-8 mb-8">
+          <p className="text-xl md:text-2xl mb-6 font-bold text-neutral-black">
+            Welcome to your new React application!
+          </p>
+          
+          <button 
+            onClick={() => navigate('/question')}
+            className="brutal-button-primary text-lg"
+          >
+            START GAME
+          </button>
         </div>
-        <div className="bg-gray-100 p-4 rounded">
-          <h2 className="text-xl font-semibold mb-2">Game Rules</h2>
-          <p className="text-gray-600">Learn how to play</p>
+
+        {/* Grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="brutal-card p-6 bg-neutral-gray-50">
+            <h2 className="text-2xl font-black mb-4 text-primary-main">PLAYER STATS</h2>
+            <p className="text-neutral-700 font-medium">Your progress will appear here</p>
+          </div>
+          <div className="brutal-card p-6 bg-neutral-gray-50">
+            <h2 className="text-2xl font-black mb-4 text-primary-main">GAME RULES</h2>
+            <p className="text-neutral-700 font-medium">Learn how to play</p>
+          </div>
         </div>
       </div>
     </div>

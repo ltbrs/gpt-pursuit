@@ -54,117 +54,121 @@ const ResultPage: React.FC<ResultPageProps> = ({ answers, questions }) => {
         { name: 'Incorrect', value: totalQuestions - correctAnswers }
     ];
 
-    const COLORS = ['#10B981', '#EF4444'];
+    const COLORS = ['#00FF91', '#FF006E'];
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <h2 className="text-3xl font-bold mb-8 text-center">Quiz Results</h2>
-            
-            {/* Summary Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white shadow-lg rounded-lg p-6">
-                    <h3 className="text-xl font-semibold mb-4">Overall Performance</h3>
-                    <div className="flex items-center justify-center mb-4">
-                        <div className="text-4xl font-bold text-blue-600">{accuracy.toFixed(1)}%</div>
+        <div className="min-h-screen bg-neutral-white p-6">
+            <div className="max-w-5xl mx-auto">
+                <h2 className="text-6xl md:text-7xl font-black mb-12 text-center text-primary-main">
+                    QUIZ RESULTS
+                </h2>
+                
+                {/* Summary Statistics */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div className="brutal-card p-8 bg-neutral-gray-50">
+                        <h3 className="text-3xl font-black mb-6 text-primary-main">OVERALL PERFORMANCE</h3>
+                        <div className="flex items-center justify-center mb-6">
+                            <div className="text-7xl font-black text-primary-main">{accuracy.toFixed(1)}%</div>
+                        </div>
+                        <div className="w-full bg-neutral-gray-300 border-2 border-neutral-black h-8">
+                            <div 
+                                className="bg-primary-main h-full transition-all duration-500 border-r-2 border-neutral-black"
+                                style={{ width: `${accuracy}%` }}
+                            ></div>
+                        </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-4">
-                        <div 
-                            className="bg-blue-600 h-4 rounded-full transition-all duration-500"
-                            style={{ width: `${accuracy}%` }}
-                        ></div>
+                    
+                    <div className="brutal-card p-8 bg-neutral-gray-50">
+                        <h3 className="text-3xl font-black mb-6 text-primary-main">SCORE DISTRIBUTION</h3>
+                        <div className="h-64">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                    <Pie
+                                        data={pieData}
+                                        cx="50%"
+                                        cy="50%"
+                                        labelLine={false}
+                                        outerRadius={80}
+                                        fill="#8884d8"
+                                        dataKey="value"
+                                        label={({ name, percent }: { name: string; percent: number }) => 
+                                            `${name}: ${(percent * 100).toFixed(0)}%`
+                                        }
+                                    >
+                                        {pieData.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
-                
-                <div className="bg-white shadow-lg rounded-lg p-6">
-                    <h3 className="text-xl font-semibold mb-4">Score Distribution</h3>
+
+                {/* Category Performance */}
+                <div className="brutal-card p-8 mb-8 bg-neutral-gray-50">
+                    <h3 className="text-3xl font-black mb-6 text-primary-main">PERFORMANCE BY CATEGORY</h3>
                     <div className="h-64">
                         <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <Pie
-                                    data={pieData}
-                                    cx="50%"
-                                    cy="50%"
-                                    labelLine={false}
-                                    outerRadius={80}
-                                    fill="#8884d8"
-                                    dataKey="value"
-                                    label={({ name, percent }: { name: string; percent: number }) => 
-                                        `${name}: ${(percent * 100).toFixed(0)}%`
-                                    }
-                                >
-                                    {pieData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                                    ))}
-                                </Pie>
+                            <BarChart data={categoryChartData}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#000" />
+                                <XAxis dataKey="category" stroke="#000" />
+                                <YAxis stroke="#000" />
                                 <Tooltip />
-                            </PieChart>
+                                <Bar dataKey="correct" name="Correct" fill="#00FF91" />
+                                <Bar dataKey="incorrect" name="Incorrect" fill="#FF006E" />
+                            </BarChart>
                         </ResponsiveContainer>
                     </div>
                 </div>
-            </div>
 
-            {/* Category Performance */}
-            <div className="bg-white shadow-lg rounded-lg p-6 mb-8">
-                <h3 className="text-xl font-semibold mb-4">Performance by Category</h3>
-                <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={categoryChartData}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="category" />
-                            <YAxis />
-                            <Tooltip />
-                            <Bar dataKey="correct" name="Correct" fill="#10B981" />
-                            <Bar dataKey="incorrect" name="Incorrect" fill="#EF4444" />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
-            </div>
-
-            {/* Detailed Answers */}
-            <div className="bg-white shadow-lg rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4">Detailed Answers</h3>
-                {answers.map((answer, index) => (
-                    <div key={index} className="mb-4 p-4 border rounded-lg hover:shadow-md transition-shadow">
-                        <div className="flex justify-between items-start mb-2">
-                            <p className="font-semibold text-lg">{answer.question.question}</p>
-                            <span className={`px-3 py-1 rounded-full text-sm ${
-                                answer.isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                            }`}>
-                                {answer.isCorrect ? 'Correct' : 'Incorrect'}
-                            </span>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-3 bg-gray-50 rounded">
-                                <p className="font-medium text-gray-700">Your Answer:</p>
-                                <p className="mt-1">{answer.userAnswer}</p>
-                            </div>
-                            <div className="p-3 bg-gray-50 rounded">
-                                <p className="font-medium text-gray-700">Expected Answer:</p>
-                                <p className="mt-1">{answer.question.expected_answer}</p>
-                            </div>
-                        </div>
-                        {Object.entries(answer.question.llm_answers).map(([model, llmAnswer]) => (
-                            <div key={model} className="mt-2 p-3 bg-blue-50 rounded">
-                                <p className="font-medium text-blue-700">{model} Answer:</p>
-                                <p className="mt-1">{llmAnswer.answer}</p>
-                                <span className={`text-sm ${
-                                    llmAnswer.is_correct ? 'text-green-600' : 'text-red-600'
+                {/* Detailed Answers */}
+                <div className="brutal-card p-8 mb-8">
+                    <h3 className="text-3xl font-black mb-6 text-primary-main">DETAILED ANSWERS</h3>
+                    {answers.map((answer, index) => (
+                        <div key={index} className="brutal-card p-6 mb-6 bg-neutral-gray-50">
+                            <div className="flex justify-between items-start mb-4">
+                                <p className="font-black text-xl text-neutral-black flex-1 pr-4">{answer.question.question}</p>
+                                <span className={`px-4 py-2 border-2 border-neutral-black font-black text-sm ${
+                                    answer.isCorrect ? 'bg-status-success text-neutral-black' : 'bg-status-error text-neutral-white'
                                 }`}>
-                                    {llmAnswer.is_correct ? 'Correct' : 'Incorrect'}
+                                    {answer.isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
                                 </span>
                             </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div className="brutal-card p-4 bg-neutral-white">
+                                    <p className="font-black text-neutral-black mb-2">YOUR ANSWER:</p>
+                                    <p className="font-medium text-neutral-700">{answer.userAnswer}</p>
+                                </div>
+                                <div className="brutal-card p-4 bg-neutral-white">
+                                    <p className="font-black text-neutral-black mb-2">EXPECTED ANSWER:</p>
+                                    <p className="font-medium text-neutral-700">{answer.question.expected_answer}</p>
+                                </div>
+                            </div>
+                            {Object.entries(answer.question.llm_answers).map(([model, llmAnswer]) => (
+                                <div key={model} className="brutal-card p-4 bg-primary-lightest mb-2">
+                                    <p className="font-black text-neutral-black mb-2">{model.toUpperCase()} ANSWER:</p>
+                                    <p className="font-medium text-neutral-700 mb-2">{llmAnswer.answer}</p>
+                                    <span className={`font-black text-sm px-3 py-1 border-2 border-neutral-black inline-block ${
+                                        llmAnswer.is_correct ? 'bg-status-success text-neutral-black' : 'bg-status-error text-neutral-white'
+                                    }`}>
+                                        {llmAnswer.is_correct ? '✓ CORRECT' : '✗ INCORRECT'}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
 
-            <div className="mt-8 text-center">
-                <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg"
-                    onClick={handleRestart}
-                >
-                    Start New Quiz
-                </button>
+                <div className="text-center">
+                    <button
+                        className="brutal-button-primary text-lg"
+                        onClick={handleRestart}
+                    >
+                        START NEW QUIZ
+                    </button>
+                </div>
             </div>
         </div>
     );
