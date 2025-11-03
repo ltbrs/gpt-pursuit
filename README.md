@@ -1,6 +1,13 @@
 # gpt-pursuit
 Compete against LLM at Trival Pursuit.
 
+## Installation
+
+Frontend:
+```sh
+npm run start
+```
+
 # Battle Plan
 
 1. Gather data:
@@ -27,3 +34,4 @@ Compete against LLM at Trival Pursuit.
 - llm answers
 - line chart of ranking evolutions between llm and you
 - Use time to answer and compare it to LLM inference, power usage to answer (compare to the food you need to process that question)
+

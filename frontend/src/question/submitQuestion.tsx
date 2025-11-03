@@ -1,4 +1,5 @@
 import { Question, UserAnswer } from './types';
+import { compareTwoStrings } from 'string-similarity';
 
 
 
@@ -14,8 +15,33 @@ function normalizeAnswer(answer: string) {
     .trim(); // Trim surrounding whitespace
 }
 
-function isCorrect(userAnswer: string, expectedAnswer: string) {
-  return normalizeAnswer(userAnswer) === normalizeAnswer(expectedAnswer);
+/**
+ * Checks if the user's answer is correct using similarity matching.
+ * Uses string-similarity (similar to Python's difflib.SequenceMatcher) to calculate
+ * similarity ratio between normalized answers.
+ * 
+ * @param userAnswer - The user's submitted answer
+ * @param expectedAnswer - The expected correct answer
+ * @param similarityThreshold - Minimum similarity ratio (0-1) to consider correct. Default: 0.8
+ * @returns true if similarity >= threshold, false otherwise
+ */
+function isCorrect(
+  userAnswer: string, 
+  expectedAnswer: string, 
+  similarityThreshold: number = 0.8
+): boolean {
+  const normalizedUser = normalizeAnswer(userAnswer);
+  const normalizedExpected = normalizeAnswer(expectedAnswer);
+  
+  // Exact match always returns true
+  if (normalizedUser === normalizedExpected) {
+    return true;
+  }
+  
+  // Calculate similarity ratio (0-1, similar to difflib.SequenceMatcher.ratio())
+  const similarity = compareTwoStrings(normalizedUser, normalizedExpected);
+  
+  return similarity >= similarityThreshold;
 }
 
 function submitQuestion(userAnswer: string, question: Question) {
