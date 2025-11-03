@@ -32,40 +32,48 @@ const QuestionPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      {!showResults && currentQuestion ? (
-        <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-          <h1 className="text-4xl font-bold mb-6 text-blue-600">
-            Quiz {previousQuestions.length} out of {numQuestions}
-          </h1>
-          <p className="text-gray-700 mb-4 text-xl">
-            {currentQuestion.question}
-          </p>
-          
-          <div className="mb-4">
-            <label htmlFor="answer" className="block text-gray-700 text-sm font-bold mb-2">
-              Your Answer
-            </label>
-            <input
-              type="text"
-              id="answer"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Type your answer here..."
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-            />
+    <div className="min-h-screen bg-neutral-white p-6">
+      <div className="max-w-5xl mx-auto">
+        {!showResults && currentQuestion ? (
+          <div className="brutal-card p-8 mb-6">
+            <h1 className="text-5xl md:text-6xl font-black mb-8 text-primary-main">
+              QUIZ {previousQuestions.length} / {numQuestions}
+            </h1>
+            <p className="text-2xl md:text-3xl mb-8 font-bold text-neutral-black leading-relaxed">
+              {currentQuestion.question}
+            </p>
+            
+            <div className="mb-6">
+              <label htmlFor="answer" className="block text-neutral-black text-lg font-black mb-3">
+                YOUR ANSWER
+              </label>
+              <input
+                type="text"
+                id="answer"
+                className="brutal-input w-full text-lg"
+                placeholder="Type your answer here..."
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSubmit();
+                  }
+                }}
+              />
+            </div>
+            
+            <button 
+              className="brutal-button-primary text-lg"
+              onClick={handleSubmit}
+              disabled={!userAnswer.trim()}
+            >
+              SUBMIT ANSWER
+            </button>
           </div>
-          
-          <button 
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors"
-            onClick={handleSubmit}
-          >
-            Submit Answer
-          </button>
-        </div>
-      ) : (
-        <ResultPage answers={answers} questions={previousQuestions} />
-      )}
+        ) : (
+          <ResultPage answers={answers} questions={previousQuestions} />
+        )}
+      </div>
     </div>
   );
 };

@@ -2,3 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Neo-Brutalism Base Styles */
+@layer base {
+  body {
+    @apply bg-neutral-white text-neutral-black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black;
+    letter-spacing: -0.02em;
+  }
+
+  button {
+    @apply font-bold;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1) !important;
+  }
+
+  input, textarea {
+    @apply border-2 border-neutral-black;
+  }
+
+  input:focus, textarea:focus {
+    @apply outline-none;
+    box-shadow: 4px 4px 0px 0px rgba(0, 108, 54, 0.3);
+  }
+}
+
+@layer components {
+  .brutal-card {
+    @apply border-2 border-neutral-black bg-neutral-white;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutal-button {
+    @apply border-2 border-neutral-black font-bold px-6 py-3;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutal-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutal-button:disabled:hover {
+    transform: none;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutal-button-primary {
+    @apply brutal-button bg-primary-main text-neutral-white;
+  }
+
+  .brutal-button-primary:disabled {
+    @apply bg-neutral-gray-400 cursor-not-allowed;
+    opacity: 0.6;
+  }
+
+  .brutal-button-secondary {
+    @apply brutal-button bg-neutral-white text-neutral-black;
+  }
+
+  .brutal-input {
+    @apply border-2 border-neutral-black px-4 py-3 font-medium;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .brutal-input:focus {
+    box-shadow: 4px 4px 0px 0px rgba(0, 108, 54, 0.5);
+  }
+}
