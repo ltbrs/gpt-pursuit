@@ -1,6 +1,7 @@
 from .llm import load_pipeline, get_name
 from .types import LLMConfig, Question, LLMAnswer
 import difflib
+from src.consts import DEFAULT_BUILD_QUESTION
 
 PROMPT = """You are participating in a trivia contest. Answer the following question: {question}"""
 
@@ -8,7 +9,7 @@ PROMPT = """You are participating in a trivia contest. Answer the following ques
 def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[str]:
     pipe = load_pipeline(llm_config)
     return [pipe(
-        llm_config.build_pipeline_input(PROMPT.format(question=question))
+        llm_config.get("build_pipeline_input", DEFAULT_BUILD_QUESTION)(PROMPT.format(question=question))
     ) for question in questions]
 
 def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[str]]:
