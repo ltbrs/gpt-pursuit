@@ -5,8 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
+
 #LLM Models
 data-acquisition/models
+notebook*
 
 # JS
 node_modules/
