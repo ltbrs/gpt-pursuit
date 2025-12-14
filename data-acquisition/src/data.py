@@ -13,7 +13,7 @@ def get_questions_df()->pd.DataFrame:
 
     datasets = {}
     for sheet_name in SHEET_NAMES:
-        datasets[sheet_name] = pd.read_excel(os.path.join(os.path.dirname(__file__), "Trivia-Printable.xlsx"), sheet_name=sheet_name)
+        datasets[sheet_name] = pd.read_excel(os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "Trivia-Printable.xlsx"), sheet_name=sheet_name)
     concatenated_df = pd.DataFrame()
     for sheet_name in SHEET_NAMES:
         if sheet_name == "Question Needs Category Removed":
