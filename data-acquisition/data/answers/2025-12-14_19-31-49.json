@@ -1,0 +1,167 @@
+[
+    {
+        "id": 22967,
+        "category": "General",
+        "question": "What Japanese word means good for nothing",
+        "expected_answer": "Yakuza",
+        "llm_answers": {
+            "HuggingFaceTB/SmolLM2-360M-Instruct": {
+                "answer": "Japanese word for \"good for nothing\" is \"\u308f\u304b\u308a\u307e\u305b\u3093\" (waikori masen).",
+                "is_correct": false
+            },
+            "HuggingFaceTB/SmolLM2-135M-Instruct": {
+                "answer": "The Japanese word for \"good\" is \"kan'yaku\".",
+                "is_correct": false
+            },
+            "google/flan-t5-small": {
+                "answer": "   (                                                                                                                            ",
+                "is_correct": false
+            },
+            "google/flan-t5-base": {
+                "answer": "samurai",
+                "is_correct": false
+            },
+            "google/gemma-2-2b-it": {
+                "answer": "The Japanese word that means \"good for nothing\" is **\u30c1\u30f3\u30d7\u30f3\u30ab\u30f3\u30d7\u30f3 (chim-pun-ka-pun)**. \n\nIt's a very informal and humorous term, often used jokingly or to describe someone who is inept or lacks talent. \n",
+                "is_correct": false
+            },
+            "Qwen/Qwen2.5-1.5B-Instruct": {
+                "answer": "The Japanese word that means \"good for nothing\" is \"\u7121\u99c4\u306a\u3053\u3068\" (wataran na koto). This phrase literally translates to \"useless thing.\"",
+                "is_correct": false
+            }
+        },
+        "difficulty": null
+    },
+    {
+        "id": 35762,
+        "category": "General",
+        "question": "No US president has ever been what",
+        "expected_answer": "An only child",
+        "llm_answers": {
+            "HuggingFaceTB/SmolLM2-360M-Instruct": {
+                "answer": "No US president has ever been a non-American citizen.",
+                "is_correct": false
+            },
+            "HuggingFaceTB/SmolLM2-135M-Instruct": {
+                "answer": "No US president has ever been a presidential candidate, as this is the highest level of public government.",
+                "is_correct": false
+            },
+            "google/flan-t5-small": {
+                "answer": "president of the United States",
+                "is_correct": false
+            },
+            "google/flan-t5-base": {
+                "answer": "president of the united states",
+                "is_correct": false
+            },
+            "google/gemma-2-2b-it": {
+                "answer": "No US president has ever been **impeached twice**. \n\nLet me know if you'd like to try another trivia question! \n",
+                "is_correct": false
+            },
+            "Qwen/Qwen2.5-1.5B-Instruct": {
+                "answer": "No U.S. president has ever been a woman.",
+                "is_correct": false
+            }
+        },
+        "difficulty": null
+    },
+    {
+        "id": 33007,
+        "category": "General",
+        "question": "Where are the 'wallops'",
+        "expected_answer": "Hampshire",
+        "llm_answers": {
+            "HuggingFaceTB/SmolLM2-360M-Instruct": {
+                "answer": "The 'wallops' in the trivia are a type of slang term that refers to a person who is awkward and uncoordinated due to their size, typically in a physical or athletic context.",
+                "is_correct": false
+            },
+            "HuggingFaceTB/SmolLM2-135M-Instruct": {
+                "answer": "The wallops are typically found in New Zealand, particularly in the South Island.",
+                "is_correct": false
+            },
+            "google/flan-t5-small": {
+                "answer": "st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis , st. louis ,",
+                "is_correct": false
+            },
+            "google/flan-t5-base": {
+                "answer": "san francisco california",
+                "is_correct": false
+            },
+            "google/gemma-2-2b-it": {
+                "answer": "The \"wallops\" are the **Wallops Island** located in **Virginia**, United States. \n",
+                "is_correct": false
+            },
+            "Qwen/Qwen2.5-1.5B-Instruct": {
+                "answer": "I'm sorry, but I'm not sure what you're asking about \"the wallops\". Could you please provide more context or clarify your question?",
+                "is_correct": false
+            }
+        },
+        "difficulty": null
+    },
+    {
+        "id": 13368,
+        "category": "General",
+        "question": "What volcanic peak is visible from naples",
+        "expected_answer": "Mount vesuvius",
+        "llm_answers": {
+            "HuggingFaceTB/SmolLM2-360M-Instruct": {
+                "answer": "The volcanic peak visible from Naples is Mount Etna, a dormant volcano located in the Apennine Mountains in southern Italy.",
+                "is_correct": false
+            },
+            "HuggingFaceTB/SmolLM2-135M-Instruct": {
+                "answer": "From the information provided, the volcano that is visible from the island of Naples in Italy is Mount Vesuvius.",
+                "is_correct": false
+            },
+            "google/flan-t5-small": {
+                "answer": "Rocky Mountains",
+                "is_correct": false
+            },
+            "google/flan-t5-base": {
+                "answer": "napoleon s peak",
+                "is_correct": false
+            },
+            "google/gemma-2-2b-it": {
+                "answer": "The volcanic peak visible from Naples is **Mount Vesuvius**. \ud83c\udf0b \n",
+                "is_correct": false
+            },
+            "Qwen/Qwen2.5-1.5B-Instruct": {
+                "answer": "The highest volcano that can be seen from Naples, Italy, is Mount Vesuvius (also known as Monte Nuovo). This stratovolcano is located about 5 km (3 miles) west of Naples and offers panoramic views of the city, especially during sunrise or sunset when the surrounding hills become illuminated by the golden light of the setting sun.",
+                "is_correct": false
+            }
+        },
+        "difficulty": null
+    },
+    {
+        "id": 39502,
+        "category": "General",
+        "question": "How Are Tom Rowlands & Ed Simmons Better Known?",
+        "expected_answer": "The Chemical Brothers",
+        "llm_answers": {
+            "HuggingFaceTB/SmolLM2-360M-Instruct": {
+                "answer": "Tom Rowlands and Ed Simmons are better known as Tom Brady and the Ravens, respectively.",
+                "is_correct": false
+            },
+            "HuggingFaceTB/SmolLM2-135M-Instruct": {
+                "answer": "Tom Rowlands and Ed Simmons are both iconic American actors and comedians, respectively.\n\nTom Rowlands, also known as Tom Tom, was an American film and television actor, known for his acting career spanning over 11 years. He was born and raised in New Jersey, and is known for his strong performance in a wide range of roles, including Hollywood blockbusters like \"The Lord of the Rings\" and \"The Godfather.\" Tom has appeared in numerous films and TV shows, including \"The Godfather,\" \"The Lord of the Rings,\" \"The Lion King,\" and \"The Shawshank Redemption.\"\n\nEd Simmons, also known as Ed Sims, was an American comedian, known for his stand-up routine, comedy, and writing career. He was born and raised in New York City, and is known for his comedic performances in films like \"The King and I,\" \"Lady and the Tramp,\" \"The King and I,\" \"Pulp Fiction,\" and \"The King and I.\" Ed has appeared in numerous films and TV shows, including \"The King and I,\" \"Pulp Fiction,\" \"The King and I,\" \"Rebel Without a Cause,\" and \"",
+                "is_correct": false
+            },
+            "google/flan-t5-small": {
+                "answer": "he is known as a saxophonist",
+                "is_correct": false
+            },
+            "google/flan-t5-base": {
+                "answer": "tom rowlands and ed simmons",
+                "is_correct": false
+            },
+            "google/gemma-2-2b-it": {
+                "answer": "Tom Rowlands and Ed Simmons are better known as **The Chemical Brothers**. \n",
+                "is_correct": false
+            },
+            "Qwen/Qwen2.5-1.5B-Instruct": {
+                "answer": "I'm sorry, but I don't have any specific information about how Tom Rowlands and Ed Simmons are better known. As an AI language model, my training data only goes up to 2021, so I don't have access to recent developments or changes in their public profiles or media appearances. Without more context or details about your source of information, it's difficult for me to provide accurate answers regarding their current or past public identities. If you have any other questions that need help, feel free to ask!",
+                "is_correct": false
+            }
+        },
+        "difficulty": null
+    }
+]

@@ -2,9 +2,6 @@ import os
 from src.types import LLMConfig
 from transformers import pipeline, Pipeline
 
-PROMPT = """You are participating in a trivia contest. Answer the following question: {question}"""
-
-    
 def get_name(llm_config:LLMConfig) -> str:
     return llm_config['pipeline_kwargs'].get("model", "Unknown")
 
