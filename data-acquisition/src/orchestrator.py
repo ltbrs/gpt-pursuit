@@ -7,12 +7,13 @@ ANSWER_FOLDER = os.path.join(
     os.path.dirname(
     os.path.dirname(__file__)) , "data","answers")
 
-BATCH_SIZE = 1
+BATCH_SIZE = 5
 
 def save_answers(questions:list[Question])->None:
     json.dump(
         questions,
-        open(os.path.join(ANSWER_FOLDER, f"{datetime.now()}.json")))
+        open(os.path.join(ANSWER_FOLDER, f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"), "w"),
+        indent=4)
     
 
 def load_answered_questions()->list[Question]:
