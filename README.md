@@ -34,4 +34,5 @@ npm run start
 - llm answers
 - line chart of ranking evolutions between llm and you
 - Use time to answer and compare it to LLM inference, power usage to answer (compare to the food you need to process that question)
+- create a little formula at the end which reuse the number of parameter of a model, if the model have correctly answered and then say to the user you are XM parameters
 
