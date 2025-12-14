@@ -1,7 +1,12 @@
 
 from .types import LLMConfig
 
-SELECTED_LLMS = [
+
+DEFAULT_BUILD_QUESTION = lambda content: [{"role": "user", "content": content}]
+
+
+
+SELECTED_LLMS:list[LLMConfig] = [
     LLMConfig(
         pipeline_kwargs=dict(
             task="text-generation",
@@ -71,9 +76,3 @@ SELECTED_LLMS = [
 
 
 
-
-
-
-
-DEFAULT_BUILD_QUESTION = lambda content: [{"role": "user", "content": content}]
-    

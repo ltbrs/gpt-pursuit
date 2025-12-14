@@ -1,18 +1,12 @@
 from dataclasses import dataclass
 from typing import Callable, Any, TypedDict, NotRequired
-from consts import DEFAULT_BUILD_QUESTION
 
-@dataclass
-class LLMConfig:
+
+class LLMConfig(TypedDict):
     model_size: int
-    pipeline_kwargs: dict[str, Any]
-    build_pipeline_input: Callable[[str], Any] = DEFAULT_BUILD_QUESTION
+    pipeline_kwargs: dict[str, str|int]
+    build_pipeline_input: NotRequired[Callable[[str], Any]]
     
-    @property
-    def name(self) -> str:
-        return self.pipeline_kwargs.get("model", "Unknown")
-
-
 class LLMAnswer(TypedDict):
     answer: str
     is_correct: bool
