@@ -2,6 +2,8 @@ from .llm import load_pipeline, get_name
 from .types import LLMConfig, Question, LLMAnswer
 import difflib
 from src.consts import DEFAULT_BUILD_QUESTION
+import time 
+from datetime import timedelta
 
 PROMPT = """You are participating in a trivia contest. Your answer will directly be compared to the expected answer, so only return the answer to the question.
 Do not include explanations, reasoning, or any other text.
@@ -21,13 +23,24 @@ Expected answer: "1945"
 Answer the following question: {question}"""
 
 
-def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[str]:
+def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAnswer]:
     pipe = load_pipeline(llm_config)
-    return [pipe(
-        llm_config.get("build_pipeline_input", DEFAULT_BUILD_QUESTION)(PROMPT.format(question=question))
-    ) for question in questions]
+    build_pipeline_input = llm_config.get("build_pipeline_input", DEFAULT_BUILD_QUESTION)
+    answers = []
+    for question in questions:
+        start_time = time.time()
+        answer = pipe(
+            build_pipeline_input(PROMPT.format(question=question))
+        )
+        end_time = time.time()
+        answers.append(LLMAnswer(
+            answer=answer,
+            time_taken=timedelta(seconds=end_time - start_time),
+        ))
+    return answers
 
-def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[str]]:
+    
+def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[LLMAnswer]]:
     return [answer_questions(questions, llm) for llm in llms]
 
 def format_answer(

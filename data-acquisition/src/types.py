@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Callable, Any, TypedDict, NotRequired
-
+from datetime import timedelta
 
 class LLMConfig(TypedDict):
     model_size: int
@@ -9,7 +9,8 @@ class LLMConfig(TypedDict):
     
 class LLMAnswer(TypedDict):
     answer: str
-    is_correct: bool
+    time_taken: timedelta
+    is_correct: NotRequired[bool]
 
 class Question(TypedDict):
     id: int
