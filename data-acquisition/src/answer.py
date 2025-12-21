@@ -3,7 +3,22 @@ from .types import LLMConfig, Question, LLMAnswer
 import difflib
 from src.consts import DEFAULT_BUILD_QUESTION
 
-PROMPT = """You are participating in a trivia contest. Answer the following question: {question}"""
+PROMPT = """You are participating in a trivia contest. Your answer will directly be compared to the expected answer, so only return the answer to the question.
+Do not include explanations, reasoning, or any other text.
+
+If multiple valid answers exist, provide the most common or standard form:
+- Use full names when common (e.g., "William Shakespeare" not "Shakespeare")
+- Don't use standard abbreviations (e.g., "WWII" is not acceptable, use "World War II" instead)
+- For dates, use the year only (e.g., "1945" not "the year 1945")
+
+Examples:
+Question: "What is the capital of France?"
+Expected answer: "Paris"
+
+Question: "In what year did World War II end?"
+Expected answer: "1945"
+
+Answer the following question: {question}"""
 
 
 def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[str]:
