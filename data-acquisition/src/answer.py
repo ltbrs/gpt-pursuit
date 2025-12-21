@@ -13,14 +13,15 @@ If multiple valid answers exist, provide the most common or standard form:
 - Don't use standard abbreviations (e.g., "WWII" is not acceptable, use "World War II" instead)
 - For dates, use the year only (e.g., "1945" not "the year 1945")
 
-Examples:
+Example 1:
 Question: "What is the capital of France?"
-Expected answer: "Paris"
+Expected answer from you: "Paris"
 
+Example 2:
 Question: "In what year did World War II end?"
-Expected answer: "1945"
+Expected answer from you: "1945"
 
-Answer the following question: {question}"""
+It's your turn, answer the following question: {question}"""
 
 
 def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAnswer]:
