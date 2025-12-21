@@ -5,7 +5,7 @@ import json
 
 ANSWER_FOLDER = os.path.join(
     os.path.dirname(
-    os.path.dirname(__file__)) , "data","answers")
+    os.path.dirname(__file__)) , "data","refined")
 
 BATCH_SIZE = 5
 
