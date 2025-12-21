@@ -1,8 +1,9 @@
 import pandas as pd
 import os
 
-def get_questions_df()->pd.DataFrame:
-        
+FILE_PATH =os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "landing", "Trivia-Printable.xlsx")
+
+def get_questions_df(file_path:str=FILE_PATH)->pd.DataFrame:
     SHEET_NAMES = [
         "Trivia",
         "Smarther Than a 5th Grader",
@@ -13,7 +14,7 @@ def get_questions_df()->pd.DataFrame:
 
     datasets = {}
     for sheet_name in SHEET_NAMES:
-        datasets[sheet_name] = pd.read_excel(os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "Trivia-Printable.xlsx"), sheet_name=sheet_name)
+        datasets[sheet_name] = pd.read_excel(file_path, sheet_name=sheet_name)
     concatenated_df = pd.DataFrame()
     for sheet_name in SHEET_NAMES:
         if sheet_name == "Question Needs Category Removed":
