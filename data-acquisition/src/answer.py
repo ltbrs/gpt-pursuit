@@ -1,3 +1,4 @@
+from typing import Any
 from .llm import load_pipeline, get_name
 from .types import LLMConfig, Question, LLMAnswer
 import difflib
@@ -35,11 +36,16 @@ def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAns
         )
         end_time = time.time()
         answers.append(LLMAnswer(
-            answer=answer,
+            answer=extract_answer(answer),
             time_taken=timedelta(seconds=end_time - start_time),
         ))
     return answers
 
+def extract_answer(answer: Any) -> str:
+    if isinstance(answer, list):
+        return str(answer[-1]['generated_text'][-1]['content'])
+    else:
+        return answer
     
 def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[LLMAnswer]]:
     return [answer_questions(questions, llm) for llm in llms]
