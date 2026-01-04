@@ -43,9 +43,12 @@ def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAns
 
 def extract_answer(answer: Any) -> str:
     if isinstance(answer, list):
-        return str(answer[-1]['generated_text'])
-    else:
-        return answer
+        extracted_answer = answer[-1]['generated_text']
+        if isinstance(extracted_answer, list):
+            return extracted_answer[-1]['content']
+        else:
+            return extracted_answer
+    return str(answer)    
     
 def llms_answer_questions(questions: list[str], llms: list[LLMConfig]) -> list[list[LLMAnswer]]:
     return [answer_questions(questions, llm) for llm in llms]
