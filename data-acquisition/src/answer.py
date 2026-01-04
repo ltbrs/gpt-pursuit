@@ -1,10 +1,12 @@
 from typing import Any
-from .llm import load_pipeline, get_name
+from .llm import load_pipeline, get_name, unload_pipeline
 from .types import LLMConfig, Question, LLMAnswer
 import difflib
 from src.consts import DEFAULT_BUILD_QUESTION
 import time 
 from datetime import timedelta
+
+BATCH_SIZE = 10
 
 PROMPT = """You are participating in a trivia contest. Your answer will directly be compared to the expected answer, so only return the answer to the question.
 Do not include explanations, reasoning, or any other text.
@@ -35,19 +37,29 @@ def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAns
         for question in questions
     ]
     
-    # Process entire batch at once for GPU efficiency
-    start_time = time.time()
-    raw_answers = pipe(pipeline_inputs)
-    end_time = time.time()
-    
-    # Estimate per-question time by dividing total by batch size
-    total_time = end_time - start_time
+    # Process in batches of BATCH_SIZE for GPU efficiency
+    raw_answers = []
+    total_time = 0.0
+
+    for i in range(0, len(pipeline_inputs), BATCH_SIZE):
+        batch = pipeline_inputs[i:i + BATCH_SIZE]
+        start_time = time.time()
+        batch_answers = pipe(batch)
+        end_time = time.time()
+        raw_answers.extend(batch_answers)
+        total_time += (end_time - start_time)
+
+    # Estimate per-question time by dividing total by question count
     time_per_question = timedelta(seconds=total_time / len(questions))
-    
-    return [
+    results = [
         LLMAnswer(answer=extract_answer(answer), time_taken=time_per_question)
         for answer in raw_answers
     ]
+    
+    # Unload pipeline and free GPU memory
+    unload_pipeline(pipe)
+    
+    return results
 
 def extract_answer(answer: Any) -> str:
     if isinstance(answer, list):
