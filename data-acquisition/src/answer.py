@@ -28,18 +28,26 @@ It's your turn, answer the following question: {question}"""
 def answer_questions(questions: list[str], llm_config: LLMConfig) -> list[LLMAnswer]:
     pipe = load_pipeline(llm_config)
     build_pipeline_input = llm_config.get("build_pipeline_input", DEFAULT_BUILD_QUESTION)
-    answers = []
-    for question in questions:
-        start_time = time.time()
-        answer = pipe(
-            build_pipeline_input(PROMPT.format(question=question))
-        )
-        end_time = time.time()
-        answers.append(LLMAnswer(
-            answer=extract_answer(answer),
-            time_taken=timedelta(seconds=end_time - start_time),
-        ))
-    return answers
+    
+    # Build all inputs for batch processing
+    pipeline_inputs = [
+        build_pipeline_input(PROMPT.format(question=question))
+        for question in questions
+    ]
+    
+    # Process entire batch at once for GPU efficiency
+    start_time = time.time()
+    raw_answers = pipe(pipeline_inputs)
+    end_time = time.time()
+    
+    # Estimate per-question time by dividing total by batch size
+    total_time = end_time - start_time
+    time_per_question = timedelta(seconds=total_time / len(questions))
+    
+    return [
+        LLMAnswer(answer=extract_answer(answer), time_taken=time_per_question)
+        for answer in raw_answers
+    ]
 
 def extract_answer(answer: Any) -> str:
     if isinstance(answer, list):
