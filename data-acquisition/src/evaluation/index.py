@@ -4,10 +4,10 @@ import os
 import re
 from typing import Callable
 from sentence_transformers import SentenceTransformer, util
-from evaluation.exact import exact_match, bidirectional_inclusion, keyword_match, inclusion_match
-from evaluation.sequence import sequence_match
-from evaluation.semantic import semantic_similarity
-from evaluation.fuzzy import fuzzy_match
+from src.evaluation.exact import exact_match, bidirectional_inclusion, keyword_match, inclusion_match
+from src.evaluation.sequence import sequence_match
+from src.evaluation.semantic import semantic_similarity
+from src.evaluation.fuzzy import fuzzy_match
 
 class EvaluationFunction(Enum):
     INCLUSION_MATCH = "inclusion_match"

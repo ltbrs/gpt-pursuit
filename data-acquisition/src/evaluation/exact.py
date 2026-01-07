@@ -1,18 +1,22 @@
 import re
-
+from unidecode import unidecode
 KEYWORD_MATCH_THRESHOLD = 0.6
 
 def normalize_text(text: str) -> str:
-    """Normalize text for comparison: lowercase, remove extra spaces, remove punctuation."""
-    # Remove punctuation except spaces
+    """Normalize text for comparison: lowercase, remove extra spaces, replace diacritics, remove punctuation,
+    remove non-alphanumeric characters."""
+    text = text.replace("\n", " ")
+    # Replace diacritics with ASCII equivalents (e.g., é -> e, ñ -> n)
+    text = unidecode(text)
+    # Remove punctuation and non-alphanumeric characters except spaces
     text = re.sub(r'[^\w\s]', '', text)
     # Collapse multiple whitespaces
     text = re.sub(r'\s+', ' ', text)
-    return text.lower().strip()
+    return text.lower().replace(" ", "")
 
 def inclusion_match(expected_answer: str, user_answer: str) -> bool:
     """Check if expected answer is contained in user answer."""
-    return expected_answer.lower().strip() in user_answer.lower().strip()
+    return normalize_text(expected_answer) in normalize_text(user_answer)
 
 
 def bidirectional_inclusion(expected_answer: str, user_answer: str) -> bool:
